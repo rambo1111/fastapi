@@ -1,6 +1,8 @@
+uvicorn
 fastapi
 pydantic
 typing
 joblib
 pandas
 scikit-learn
+gunicorn
