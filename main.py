@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 import joblib
@@ -10,6 +11,15 @@ app = FastAPI()
 clf = joblib.load("model.joblib")
 label_encoder = joblib.load("label_encoder.joblib")
 all_symptoms = joblib.load("all_symptoms.joblib")
+
+# Configure CORS to allow all origins
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow requests from all origins
+    allow_credentials=True,
+    allow_methods=["POST"],
+    allow_headers=["*"],
+)
 
 class SymptomsRequest(BaseModel):
     symptoms: List[str]
