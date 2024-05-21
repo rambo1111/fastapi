@@ -3,3 +3,4 @@ pydantic
 typing
 joblib
 pandas
+scikit-learn
